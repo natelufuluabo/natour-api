@@ -82,4 +82,15 @@ export class ApiService {
   getTourByRegion(region: string): tour[] {
     return tours.filter((tour) => tour.region === region);
   }
+
+  sortTourByPrice(rule:string): tour[] {
+    tours.sort((a: tour, b: tour) => {
+        const priceA = a.price;
+        const priceB = b.price;
+
+        if (rule === "low_to_high") return priceA - priceB
+        if (rule === "high_to_low") return priceB - priceA
+    });
+    return tours;
+  }
 }

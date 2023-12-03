@@ -9,6 +9,7 @@ export class ApiController {
   @HttpCode(200)
   getAllTours(@Query() params: any): tour[] {
     if (params.region) return this.apiService.getTourByRegion(params.region);
+    if (params.priceRule) return this.apiService.sortTourByPrice(params.priceRule);
     return this.apiService.getAllTours();
   }
 
