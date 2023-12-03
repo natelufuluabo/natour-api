@@ -64,4 +64,8 @@ export class ApiService {
   getAllTours(): tour[] {
     return tours;
   }
+
+  getOneTour(id:number): tour {
+    return tours.find(tour => tour.id === id);
+  }
 }
