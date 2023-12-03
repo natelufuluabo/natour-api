@@ -10,6 +10,7 @@ export class ApiController {
   getAllTours(@Query() params: any): tour[] {
     if (params.region) return this.apiService.getTourByRegion(params.region);
     if (params.priceRule) return this.apiService.sortTourByPrice(params.priceRule);
+    if (params.min_duration && params.max_duration) return this.apiService.getTourByDuration(Number(params.min_duration), Number(params.max_duration))
     return this.apiService.getAllTours();
   }
 

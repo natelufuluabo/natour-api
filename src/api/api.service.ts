@@ -83,6 +83,10 @@ export class ApiService {
     return tours.filter((tour) => tour.region === region);
   }
 
+  getTourByDuration(min_duration:number, max_duration:number): tour[] {
+    return tours.filter((tour) => tour.duration >= min_duration && tour.duration <= max_duration);
+  }
+
   sortTourByPrice(rule:string): tour[] {
     tours.sort((a: tour, b: tour) => {
         const priceA = a.price;
