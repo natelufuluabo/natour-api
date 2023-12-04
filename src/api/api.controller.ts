@@ -1,5 +1,6 @@
 import { Controller, Get, HttpCode, Param, Query } from '@nestjs/common';
-import { ApiService, tour } from './api.service';
+import { ApiService } from './api.service';
+import { tour } from 'src/interfaces/tour.interface';
 
 @Controller('api')
 export class ApiController {
@@ -9,8 +10,13 @@ export class ApiController {
   @HttpCode(200)
   getAllTours(@Query() params: any): tour[] {
     if (params.region) return this.apiService.getTourByRegion(params.region);
-    if (params.priceRule) return this.apiService.sortTourByPrice(params.priceRule);
-    if (params.min_duration && params.max_duration) return this.apiService.getTourByDuration(Number(params.min_duration), Number(params.max_duration))
+    if (params.priceRule)
+      return this.apiService.sortTourByPrice(params.priceRule);
+    if (params.min_duration && params.max_duration)
+      return this.apiService.getTourByDuration(
+        Number(params.min_duration),
+        Number(params.max_duration),
+      );
     return this.apiService.getAllTours();
   }
 
